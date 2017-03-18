@@ -18,6 +18,7 @@ const contatosRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forChild(contatosRoutes)
-    ]
+    ],
+    exports: [RouterModule]
 })
 export class ContatoRoutingModule {}

@@ -29,7 +29,8 @@ ContatoRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
             router_1.RouterModule.forChild(contatosRoutes)
-        ]
+        ],
+        exports: [router_1.RouterModule]
     })
 ], ContatoRoutingModule);
 exports.ContatoRoutingModule = ContatoRoutingModule;
