@@ -12,7 +12,31 @@ var ContatoService = (function () {
     function ContatoService() {
     }
     ContatoService.prototype.getContatos = function () {
-        return contatos_mock_1.CONTATOS;
+        return Promise.resolve(contatos_mock_1.CONTATOS);
+    };
+    ContatoService.prototype.getContatosSloly = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            setTimeout(resolve, 2000);
+        })
+            .then(function () {
+            console.log("prmeiro then");
+            return "Igor Soares de Freitas";
+        })
+            .then(function (param) {
+            console.log("segundo then");
+            console.log(param);
+            return new Promise(function (resolve2, reject2) {
+                setTimeout(function () {
+                    console.log("continuando segundo then");
+                    resolve2();
+                }, 4000);
+            });
+        })
+            .then(function () {
+            console.log("terceiro then");
+            return _this.getContatos();
+        });
     };
     return ContatoService;
 }());
