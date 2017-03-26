@@ -10,6 +10,11 @@ export class ContatoService{
         return Promise.resolve(CONTATOS);
     }
 
+    getContato(id: number): Promise<Contato> {
+        return this.getContatos()
+            .then((contatos: Contato[]) => contatos.find(contato => contato.id === id));
+    }
+
     getContatosSloly(): Promise<Contato[]> {
         return new Promise((resolve, reject) => {
             setTimeout(resolve, 2000);
@@ -25,7 +30,7 @@ export class ContatoService{
                 setTimeout(() => {
                     console.log("continuando segundo then");
                     resolve2();
-                }, 4000);
+                }, 2000);
             });
             
         })

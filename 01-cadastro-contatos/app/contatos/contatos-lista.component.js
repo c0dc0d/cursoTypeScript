@@ -17,7 +17,7 @@ var ContatosListaComponent = (function () {
     }
     ContatosListaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.contatoService.getContatosSloly()
+        this.contatoService.getContatos()
             .then(function (contatos) {
             _this.contatos = contatos;
         }).catch(function (err) { return console.log(err); });
