@@ -13,6 +13,7 @@ import { ContatoService } from './contato.service';
 export class ContatoDetalheComponent {
 
     contato: Contato;
+    private isNew: boolean = true;
 
     constructor(
         private contatoService: ContatoService,
@@ -25,6 +26,7 @@ export class ContatoDetalheComponent {
         this.route.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if(id){
+                this.isNew = false;
                 this.contatoService.getContato(id)
                     .then(contato => {
                         this.contato = contato;
@@ -49,8 +51,12 @@ export class ContatoDetalheComponent {
         };
     }
 
-    teste(): void{
-        console.log(this.contato);
+    onSubmit(): void {
+        if(this.isNew){
+            console.log("cadastro novo");
+        }else{
+            console.log("alterando contato");
+        }
     }
 
 }

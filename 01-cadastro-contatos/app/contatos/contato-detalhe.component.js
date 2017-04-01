@@ -19,6 +19,7 @@ var ContatoDetalheComponent = (function () {
         this.contatoService = contatoService;
         this.route = route;
         this.location = location;
+        this.isNew = true;
     }
     ContatoDetalheComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,6 +27,7 @@ var ContatoDetalheComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             if (id) {
+                _this.isNew = false;
                 _this.contatoService.getContato(id)
                     .then(function (contato) {
                     _this.contato = contato;
@@ -47,8 +49,13 @@ var ContatoDetalheComponent = (function () {
             'form-control-success': isValid && !isPristine
         };
     };
-    ContatoDetalheComponent.prototype.teste = function () {
-        console.log(this.contato);
+    ContatoDetalheComponent.prototype.onSubmit = function () {
+        if (this.isNew) {
+            console.log("cadastro novo");
+        }
+        else {
+            console.log("alterando contato");
+        }
     };
     return ContatoDetalheComponent;
 }());
