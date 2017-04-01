@@ -50,12 +50,17 @@ var ContatoDetalheComponent = (function () {
         };
     };
     ContatoDetalheComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var promise;
         if (this.isNew) {
             console.log("cadastro novo");
+            promise = this.contatoService.create(this.contato);
         }
         else {
             console.log("alterando contato");
+            promise = this.contatoService.update(this.contato);
         }
+        promise.then(function (contato) { return _this.location.back(); });
     };
     return ContatoDetalheComponent;
 }());

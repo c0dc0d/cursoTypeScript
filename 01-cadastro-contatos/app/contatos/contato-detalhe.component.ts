@@ -52,11 +52,16 @@ export class ContatoDetalheComponent {
     }
 
     onSubmit(): void {
+        let promise;
+
         if(this.isNew){
             console.log("cadastro novo");
+            promise = this.contatoService.create(this.contato);
         }else{
             console.log("alterando contato");
+            promise = this.contatoService.update(this.contato);
         }
+        promise.then(contato => this.location.back());
     }
 
 }
