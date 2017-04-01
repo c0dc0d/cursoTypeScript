@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 import { Contato } from './contato.model';
 import { CONTATOS } from './contatos-mock';
