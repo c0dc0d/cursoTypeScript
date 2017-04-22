@@ -12,6 +12,7 @@ var forms_1 = require("@angular/forms");
 var contato_routing_module_1 = require("./contato-routing.module");
 var contatos_lista_component_1 = require("./contatos-lista.component");
 var contato_detalhe_component_1 = require("./contato-detalhe.component");
+var contato_busca_component_1 = require("./contato-busca.component");
 var contato_service_1 = require("./contato.service");
 var ContatosModule = (function () {
     function ContatosModule() {
@@ -27,9 +28,11 @@ ContatosModule = __decorate([
         ],
         declarations: [
             contatos_lista_component_1.ContatosListaComponent,
-            contato_detalhe_component_1.ContatoDetalheComponent
+            contato_detalhe_component_1.ContatoDetalheComponent,
+            contato_busca_component_1.ContatoBuscaComponent
         ],
         exports: [
+            contato_busca_component_1.ContatoBuscaComponent,
             contatos_lista_component_1.ContatosListaComponent
         ],
         providers: [
