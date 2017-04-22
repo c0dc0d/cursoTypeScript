@@ -60,7 +60,10 @@ var ContatoDetalheComponent = (function () {
             console.log("alterando contato");
             promise = this.contatoService.update(this.contato);
         }
-        promise.then(function (contato) { return _this.location.back(); });
+        promise.then(function (contato) { return _this.goBack(); });
+    };
+    ContatoDetalheComponent.prototype.goBack = function () {
+        this.location.back();
     };
     return ContatoDetalheComponent;
 }());

@@ -45,6 +45,14 @@ var ContatoService = (function () {
             .then(function () { return contato; })
             .catch(this.handleError);
     };
+    ContatoService.prototype.delete = function (contato) {
+        var url = this.contatosUrl + "/" + contato.id;
+        return this.http
+            .delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return contato; })
+            .catch(this.handleError);
+    };
     ContatoService.prototype.handleError = function (err) {
         return Promise.reject(err.message || err);
     };
