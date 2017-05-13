@@ -18,6 +18,7 @@ var ContatoBuscaComponent = (function () {
     function ContatoBuscaComponent(contatoService, router) {
         this.contatoService = contatoService;
         this.router = router;
+        this.buscaChange = new core_1.EventEmitter();
         this.termosDaBusca = new Subject_1.Subject();
     }
     ContatoBuscaComponent.prototype.ngOnInit = function () {
@@ -31,8 +32,13 @@ var ContatoBuscaComponent = (function () {
             return Observable_1.Observable.of([]);
         });
     };
+    ContatoBuscaComponent.prototype.ngOnChanges = function (changes) {
+        var busca = changes['busca'];
+        this.search(busca.currentValue);
+    };
     ContatoBuscaComponent.prototype.search = function (termo) {
         this.termosDaBusca.next(termo);
+        this.buscaChange.emit(termo);
     };
     ContatoBuscaComponent.prototype.verDetalhe = function (contato) {
         var link = ['contato/save', contato.id];
@@ -40,6 +46,14 @@ var ContatoBuscaComponent = (function () {
     };
     return ContatoBuscaComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], ContatoBuscaComponent.prototype, "busca", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], ContatoBuscaComponent.prototype, "buscaChange", void 0);
 ContatoBuscaComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
